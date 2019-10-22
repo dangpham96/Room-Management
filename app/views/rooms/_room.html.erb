@@ -1,0 +1,11 @@
+<tr>
+  <td><span><%= room.name %></span></td>
+  <td><span><%= room.category_name %></span></td>
+  <td><span><%= room.status %></span></td> 
+  <td>
+    <%= link_to t(".delete"), room, method: :delete,
+  data: { confirm: t("sure") } %> | 
+  <%= link_to t(".show"), room %> |
+  <%= link_to t(".edit"), edit_room_path(room) %>
+  </td>
+</tr>

@@ -1,0 +1,19 @@
+<% provide :title, t("all_user") %>
+<div>
+  <h1><%= t("all_user") %></h1> 
+</div>
+
+<div>
+  <div class="col-lg-6"> 
+    <%= link_to t("add_user"), new_user_path, class: "btn btn-primary" %>
+  </div>
+  <div class="col-lg-6">
+    <div class="col-lg-6" id="search_ip">
+      <%= text_field_tag :name, "" ,id: "find_by_name_user", class: "form-control", placeholder: "#{t "search"}" %>
+    </div>
+  </div>
+</div>
+
+<div id="list_user">
+  <%= render "users/list_user" %>
+</div>

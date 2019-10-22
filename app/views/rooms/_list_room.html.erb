@@ -1,0 +1,48 @@
+<div class="row order">
+  <% @rooms.each do |room| %>
+    <div id="table-a" class="col-xs-4 col-sm-3 col-md-2">
+      <div>
+        <i class="fa fa-home">
+        <div class= "action_room">
+          <%= link_to room, title: t("show"), class: "btn btn-info btn-sm" do %>
+            <i class="fa fa-eye"></i>
+          <% end %>
+          <%= link_to edit_room_path(room), title: t("edit"), class: "btn btn-warning btn-sm" do %>
+            <i class="fa fa-edit"></i>
+          <% end %>
+          <%= link_to room, title: t("delete"), method: :delete, data: {confirm: t("sure")}, class: "btn btn-danger btn-sm" do %>
+            <i class="fa fa-trash"></i>
+          <% end %>
+        </div> 
+        </i>        
+      </div>
+      <%= link_to room_path room.id do %>
+        <% if room.active? %>
+          <div class="tables text-center" id="room-active">
+            <div class="status">
+              <div class="status-table">
+                <p class="text-center"><%= room.name %></p>
+              </div>
+            </div>               
+          <p class="status_1"><%= t("status") %>: <%= room.status %> </p> 
+          <% if room.paymented? %>
+            <p class="paymented"><%= t("paymented") %></p>
+          <% else  %>
+          <span class="unpayment"><%= t("unpayment") %></span>
+          <% end %>   
+          </div>
+        <% else %>
+          <div class="tables text-center">
+            <div class="status">
+              <div class="status-table">
+                <p class="text-center"><%= room.name %></p>
+              </div>
+            </div>           
+          <p class="status_1"> status: <%= room.status %> </p>          
+          </div>
+        <% end %> 
+      <% end %>  
+    </div>
+  <% end %>
+</div>
+<%= paginate @rooms, theme: t("theme_paging") %>

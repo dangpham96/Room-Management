@@ -1,0 +1,2 @@
+$('#list_feed_back').html('<%= j render 'feed_backs/list_feed_back', feed_backs: @feed_backs %>');
+$('#paginator').html('<%= j paginate(@feed_backs, remote: true) %>');

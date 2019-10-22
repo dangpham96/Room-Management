@@ -1,0 +1,16 @@
+<% provide :title, t("bill") %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>BILL</h1>
+        <p><%= t("time")%>: <%= @bill.created_at.strftime(t("format_time")) %></p>              
+        <p><%= t("user")%>: <%= @bill.user_name %></p>
+        <p><%= t("room")%>: <%= @bill.room_name %></p>
+        <p><%= t("price_room")%>: <%= number_to_vnd @bill.room_price %></p>    
+        <p><%= t("electrical_number")%>: <%= @bill.electrical_number %></p>
+        <p><%= t("price_electrical")%>: <%= number_to_vnd get_money_electric @bill %></p>
+        <p><%= t("price_service")%>: <%= number_to_vnd get_monney_service @bill %> </p>
+        <p><%= t("sum")%>: <%= number_to_vnd sum_money_bill @bill %></p>
+    </section>
+  </aside>
+</div>

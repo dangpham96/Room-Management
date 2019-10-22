@@ -1,0 +1,20 @@
+<% provide :title, "feed_back" %>
+<div>
+<h1><%= t("feed_back") %></h1>
+</div>
+
+
+<div>
+  <div class="col-lg-6"> 
+    <%= link_to t("create_feedback"), new_feed_back_path, class: "btn btn-primary" %>
+  </div>
+  <div class="col-lg-6">
+    <div class="col-lg-6" id="search_ip">
+    <%= text_field_tag :title, "" ,id: "find_by_title_fb", class: "form-control", placeholder: "#{t "search"}" %>
+    </div>
+  </div>
+</div>
+
+<div id="list_feed_back">
+  <%= render "feed_backs/list_feed_back" %>
+</div>

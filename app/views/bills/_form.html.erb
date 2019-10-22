@@ -1,0 +1,49 @@
+<%= form_for [@room, @bill] do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+  <div class="col-xs-12 col-md-12">
+    <ul class="nav nav-tabs">
+      <li class="active">
+        Service
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div class="table-responsive">
+        <table class="table user-list">
+          <thead>
+          <tr>
+            <th><span><%= t "name" %></span></th>
+            <th><span><%= t "price" %></span></th>
+            <th><span><%= t "action" %></span></th>
+          </tr>
+        </thead>
+          <tbody>
+            <% @services.each do |service| %>
+              <tr>
+                <td><span><%= service.name %></span></td>
+                <td><span><%= number_to_vnd service.price %></span></td>
+                <td><%= f.check_box :bill_services, {multiple: true},service.id, nil %></td>                        
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <%= f.label t("room") %>: 
+  <%= f.label @room.name %> <br>
+
+  <%= f.label t("user") %>: 
+  <%= f.label @room.user.take.name %> <br>
+
+  <%= f.label t("electrical_number") %>
+  <%= f.text_field :electrical_number, class: "form-control mb-1" %>  
+
+  <%= f.hidden_field :user_id, value: @room.user.take.id, class: "form-control mb-1" %>
+  <%= f.hidden_field :room_id, value: @room.id, class: "form-control mb-1" %>
+  
+  <%= f.label t("status") %><br/>
+  <%= f.radio_button :status, :paymented%> <%= t("active") %> <br/>
+  <%= f.radio_button :status, :unpayment, checked: "checked"  %> <%= t("unactive") %><br/> 
+
+  <%= f.submit t("submit"), class: "btn btn-primary mt-1" %>
+<% end %>

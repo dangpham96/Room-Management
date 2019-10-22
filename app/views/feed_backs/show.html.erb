@@ -1,0 +1,19 @@
+<% provide :title, @feed_back.detail %>
+<div class="row">
+  <aside class="col-md-12">
+    <section class="user_info">
+      <h1>
+      <%= @feed_back.detail %>
+      </h1>     
+    </section>
+  </aside>
+  <aside class="col-md-6">
+    <section class="user_info">
+      <p><%= t "name" %>:<%= @feed_back.user_name %> </p>   
+      <p><%= t "title" %>:<%= @feed_back.title %> </p>
+      <p><%= t "content" %>:<%= @feed_back.detail %> </p>
+      <p><%= t "status" %>:<%= @feed_back.status %> </p>
+      <p><%= t "created" %>:<%= @feed_back.created_at.strftime(t("format_time")) %> </p>
+    </section>
+  </aside>
+</div>

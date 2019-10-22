@@ -1,0 +1,33 @@
+<tr>  
+  <td><span><%= get_index_page user_counter %> </span></td>
+  <td><span><%= user.name %></span></td>
+  <td><span><%= user.phone %></span></td>
+  <td><span><%= user.idCart %></span></td>
+  <td><span><%= user.email %></span></td>
+  <td><span><%= user.count %></span></td>
+  <td><span><%= user.room_name %></span></td>
+  <td>
+    <div class="btn-group btn-group-sm" id="<%= "form-#{user}.id}" %>">
+      <%= form_for user, remote: true, authenticity_token: true do |f| %>
+        <div class="row">
+          <div class="col">
+            <%= f.select :status, enum_options_for_select(User, :status), {include_blank: false},
+            onChange: "javascript: this.form.submit_form.click();", class: "form-control" %>
+          </div>
+        </div>
+        <%= f.submit name: :submit_form, remote: true, class: "d-none" %>
+      <% end %>
+    </div>
+  </td>
+  <td>
+    <%= link_to user, title: t("show"), class: "btn btn-info btn-sm" do %>
+      <i class="fa fa-eye"></i>
+    <% end %>
+    <%= link_to edit_user_path(user), title: t("edit"), class: "btn btn-warning btn-sm" do %>
+      <i class="fa fa-edit"></i>
+    <% end %>
+    <%= link_to user, title: t("delete"), method: :delete, data: {confirm: t("sure")}, class: "btn btn-danger btn-sm" do %>
+      <i class="fa fa-trash"></i>
+    <% end %>
+  </td>
+</tr>

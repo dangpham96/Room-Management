@@ -1,0 +1,2 @@
+$('#list_room').html('<%= j render 'rooms/list_room', rooms: @rooms %>');
+$('#paginator').html('<%= j paginate(@rooms, remote: true) %>');

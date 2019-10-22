@@ -1,0 +1,29 @@
+<% provide :title, t("room") %>
+<div>
+<h1><%= t("service") %></h1>
+<%= link_to t("add_service"), new_service_path, class: "btn btn-primary" %>
+</div>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="main-box no-header clearfix">
+      <div class="main-box-body clearfix">
+        <div class="table-responsive">
+          <table class="table user-list">
+            <thead>
+              <tr>
+              <th><span><%= t("stt") %></span></th>
+                <th><span><%= t("name") %></span></th>
+                <th><span><%= t("price") %></span></span></th>
+                <th><span><%= t("action") %></span></span></th>
+              </tr>
+            </thead>
+              <tbody>
+                <%= render partial: "service", collection: @services %>
+              </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= paginate @services, theme: t("theme_paging") %>

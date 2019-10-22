@@ -1,0 +1,31 @@
+<% provide :title, @room.name %>
+<div class="row">
+<% if @room.active?  %> 
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= @room.name %>
+      </h1>
+      <p><%= t("category") %>: <%= @room.category_name %></p>
+      <p><%= t("price") %>: <%= number_to_vnd @room.category_price %></p>
+
+      <p><%= t("name_room") %>: <%= @room.name %></p>
+    </section>
+    <% if @room.unpayment? && current_user.manager?  %> 
+      <%= link_to t("create_bill"), new_room_bill_path(@room.id), class: "btn btn-primary" %>
+    <% end %>
+    <%= link_to t("view_bill"), room_bills_path(@room), class: "btn btn-primary" %>
+  </aside>
+  <% else %>
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= @room.name %>
+      </h1>
+      <p><%= t("category") %>: <%= @room.category_name %></p>
+      <p><%= t("price") %>: <%= number_to_vnd @room.category_price %></p>
+      <%= link_to t("add_user"), new_user_path, class: "btn btn-primary" %>
+    </section>
+  </aside>
+  <% end %>
+</div>

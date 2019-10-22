@@ -1,0 +1,31 @@
+<% provide :title, t("bill") %>
+<div>
+<h1><%= t("all_bill") %></h1>
+</div>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="main-box no-header clearfix">
+      <div class="main-box-body clearfix">
+        <div class="table-responsive">
+          <table class="table user-list">
+            <thead>
+              <tr>
+              <th><span><%= t("stt") %></span></th>
+                <th><span><%= t("user_name") %></span></th>
+                <th><span><%= t("price_room") %></span></th>
+                <th><span><%= t("electrical_number") %></span></span></th>
+                <th><span><%= t("create_at") %></span></span></th>
+                <th><span><%= t("update_at") %></span></span></th>
+                <th><span><%= t("action") %></span></span></th>
+              </tr>
+            </thead>
+              <tbody>
+                <%= render partial: "bill", collection: @bills %>  
+              </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= paginate @bills, theme: t("theme_paging") %>

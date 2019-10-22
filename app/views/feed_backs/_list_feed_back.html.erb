@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="main-box no-header clearfix">
+      <div class="main-box-body clearfix">
+        <div class="table-responsive">
+          <table class="table user-list">
+            <thead>
+              <tr>
+                <th><span><%= t("stt") %></span></th>
+                <th><span><%= t("User") %></span></th>
+                <th><span><%= t("title") %></span></th>
+                <th><span><%= t("content") %></span></span></th>
+                <th><span><%= t("status") %></span></span></th>
+                <th><span><%= t("created_at") %></span></span></th>
+                <th><span><%= t("action") %></span></span></th>
+              </tr>
+            </thead>
+              <tbody>
+                <%= render partial: "feed_back", collection: @feed_backs %>
+              </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= paginate @feed_backs, theme: t("theme_paging") %>

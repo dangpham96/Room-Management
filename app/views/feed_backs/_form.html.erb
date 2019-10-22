@@ -1,0 +1,19 @@
+<%= form_for @feed_back do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+
+  <%= f.label t("title") %>
+  <%= f.text_field :title, class: "form-control mb-1" %>
+
+  <%= f.label t("content") %>
+  <%= f.text_area :detail, class: "ckeditor" %>
+  
+  <%= f.hidden_field :user_id, value: current_user.id , class: "form-control mb-1" %>
+
+  <% if current_user.manager? %>
+    <%= f.label t("status") %><br/>
+    <%= f.radio_button :status, :active %> <%= t("active") %> <br/>
+    <%= f.radio_button :status, :unactive, checked: "checked" %> <%= t("unactive") %><br/> 
+  <% end %>
+
+  <%= f.submit t("submit"), class: "btn btn-primary mt-1" %>
+<% end %>

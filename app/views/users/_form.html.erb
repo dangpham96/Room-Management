@@ -1,0 +1,32 @@
+<%= form_for @user do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+  <%= f.label t "name" %>
+  <%= f.text_field :name, class: "form-control mb-1" %>
+
+  <%= f.label t "phone" %>
+  <%= f.text_field :phone, class: "form-control mb-1" %>
+
+  <%= f.label t "idCart" %>
+  <%= f.text_field :idCart, class: "form-control mb-1" %>
+
+  <%= f.label t "email" %>
+  <%= f.text_field :email, class: "form-control mb-1" %>
+
+  <%= f.label t "count" %>
+  <%= f.text_field :count, class: "form-control mb-1" %>
+
+  <%= f.label t "room" %>
+  <%= f.select :room_id, get_room, {include_blank: t("room"), selected: @user.room ? @user.room.id : ""}, {class: "form-control"} %>
+
+  <%= f.label t "password" %>
+  <%= f.password_field :password, class: "form-control mb-1" %>
+
+  <%= f.label t "password_cf" %>
+  <%= f.password_field :password_confirmation, class: "form-control mb-1" %>
+
+  <%= f.label t "status" %><br/>
+  <%= f.radio_button :status, :active, checked: "checked" %> <%= t ".active" %> <br/>
+  <%= f.radio_button :status, :unactive %> <%= t ".unactive" %><br/>
+
+  <%= f.submit t("submit"), class: "btn btn-primary" %>
+<% end %>
